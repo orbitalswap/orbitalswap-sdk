@@ -26,7 +26,7 @@ export const FACTORY_ADDRESS_MAP = {
   [ChainId.TESTNET]: '0x9d1cBf75c1299A4aa2C5A3a9F53c7C197B689C7b'
 }
 
-export const INIT_CODE_HASH = '0x544dd6f8fac0cc42ace7377041b5cbfc9d7f243c8f31e28da71fac250f396e34 '
+export const INIT_CODE_HASH = '0x544dd6f8fac0cc42ace7377041b5cbfc9d7f243c8f31e28da71fac250f396e34'
 
 export const INIT_CODE_HASH_MAP = {
   [ChainId.MAINNET]: INIT_CODE_HASH,
