@@ -1,7 +1,7 @@
 import { TradeType } from './constants'
 import invariant from 'tiny-invariant'
 import { validateAndParseAddress } from './utils'
-import { CurrencyAmount, ETHER, Percent, Trade } from './entities'
+import { CurrencyAmount, Percent, Trade } from './entities'
 
 /**
  * Options for producing the arguments to send call to the router.
@@ -37,11 +37,11 @@ export interface TradeOptionsDeadline extends Omit<TradeOptions, 'ttl'> {
 }
 
 /**
- * The parameters to use in the call to the Pancake Router to execute a trade.
+ * The parameters to use in the call to the Orbital Router to execute a trade.
  */
 export interface SwapParameters {
   /**
-   * The method to call on the Pancake Router.
+   * The method to call on the Orbital Router.
    */
   methodName: string
   /**
@@ -61,7 +61,7 @@ function toHex(currencyAmount: CurrencyAmount) {
 const ZERO_HEX = '0x0'
 
 /**
- * Represents the Pancake Router, and has static methods for helping execute trades.
+ * Represents the Orbital Router, and has static methods for helping execute trades.
  */
 export abstract class Router {
   /**
@@ -74,8 +74,8 @@ export abstract class Router {
    * @param options options for the call parameters
    */
   public static swapCallParameters(trade: Trade, options: TradeOptions | TradeOptionsDeadline): SwapParameters {
-    const etherIn = trade.inputAmount.currency === ETHER
-    const etherOut = trade.outputAmount.currency === ETHER
+    const etherIn = trade.inputAmount.currency.isNative
+    const etherOut = trade.outputAmount.currency.isNative
     // the router does not support both ether in and out
     invariant(!(etherIn && etherOut), 'ETHER_IN_OUT')
     invariant(!('ttl' in options) || options.ttl > 0, 'TTL')

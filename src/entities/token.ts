@@ -1,4 +1,5 @@
 import invariant from 'tiny-invariant'
+import { AbstractCurrency } from './AbstractCurrency'
 import { ChainId } from '../constants'
 import { validateAndParseAddress } from '../utils'
 import { Currency } from './currency'
@@ -6,10 +7,13 @@ import { Currency } from './currency'
 /**
  * Represents an ERC20 token with a unique address and some metadata.
  */
-export class Token extends Currency {
+export class Token extends AbstractCurrency {
   public readonly chainId: ChainId
   public readonly address: string
   public readonly projectLink?: string
+
+  public readonly isNative: false = false
+  public readonly isToken: true = true
 
   public constructor(
     chainId: ChainId,
@@ -19,7 +23,7 @@ export class Token extends Currency {
     name?: string,
     projectLink?: string
   ) {
-    super(decimals, symbol, name)
+    super(chainId, decimals, symbol, name)
     this.chainId = chainId
     this.address = validateAndParseAddress(address)
     this.projectLink = projectLink
@@ -48,6 +52,13 @@ export class Token extends Currency {
     invariant(this.address !== other.address, 'ADDRESSES')
     return this.address.toLowerCase() < other.address.toLowerCase()
   }
+  
+  /**
+   * Return this token, which does not need to be wrapped
+   */
+   public get wrapped(): Token {
+    return this
+  }
 }
 
 /**
@@ -65,17 +76,17 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
   }
 }
 
-export const WETH = {
-  [ChainId.MAINNET]: new Token(
-    ChainId.MAINNET,
+export const WNATIVE = {
+  [ChainId.BSC_MAINNET]: new Token(
+    ChainId.BSC_MAINNET,
     '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
     18,
     'WBNB',
     'Wrapped BNB',
     'https://www.binance.org'
   ),
-  [ChainId.TESTNET]: new Token(
-    ChainId.TESTNET,
+  [ChainId.BSC_TESTNET]: new Token(
+    ChainId.BSC_TESTNET,
     '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
     18,
     'WBNB',
