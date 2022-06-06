@@ -1,10 +1,10 @@
-import { currencyEquals } from '../token'
-import { Currency } from '../currency'
 import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
 import _Big from 'big.js'
 import toFormat from 'toformat'
 
+import { Currency } from '../currency'
+import { currencyEquals } from '../token'
 import { BigintIsh, Rounding, TEN, SolidityType } from '../../constants'
 import { parseBigintIsh, validateSolidityTypeInstance } from '../../utils'
 import { Fraction } from './fraction'

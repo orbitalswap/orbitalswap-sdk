@@ -1,4 +1,3 @@
-import { Binance } from 'entities/Native'
 import JSBI from 'jsbi'
 
 // exports for external consumption
@@ -32,12 +31,6 @@ export const INIT_CODE_HASH = '0x544dd6f8fac0cc42ace7377041b5cbfc9d7f243c8f31e28
 export const INIT_CODE_HASH_MAP = {
   [ChainId.BSC_MAINNET]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0x544dd6f8fac0cc42ace7377041b5cbfc9d7f243c8f31e28da71fac250f396e34'
-}
-
-
-export const NATIVE_CURRENCIES = {
-  [ChainId.BSC_MAINNET]: Binance.onChain(ChainId.BSC_MAINNET),
-  [ChainId.BSC_TESTNET]: Binance.onChain(ChainId.BSC_TESTNET),
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)

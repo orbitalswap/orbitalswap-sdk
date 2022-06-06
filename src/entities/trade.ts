@@ -1,7 +1,7 @@
 import invariant from 'tiny-invariant'
-import { InsufficientInputAmountError, InsufficientReservesError } from '..'
+import { ChainId, InsufficientInputAmountError, InsufficientReservesError } from '..'
 
-import { ChainId, ONE, TradeType, ZERO } from '../constants'
+import { ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
 import { Currency } from './currency'
 import { CurrencyAmount } from './fractions/currencyAmount'

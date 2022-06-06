@@ -14,12 +14,12 @@ import {
   ONE,
   FIVE,
   FEES_NUMERATOR,
-  FEES_DENOMINATOR,
-  ChainId
+  FEES_DENOMINATOR
 } from '../constants'
 import { sqrt, parseBigintIsh } from '../utils'
 import { InsufficientReservesError, InsufficientInputAmountError } from '../errors'
 import { Token } from './token'
+import { ChainId } from '..'
 
 let PAIR_ADDRESS_CACHE: { [key: string]: string } = {}
 

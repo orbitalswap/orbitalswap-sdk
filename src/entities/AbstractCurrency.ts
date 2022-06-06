@@ -1,8 +1,8 @@
 import invariant from 'tiny-invariant'
 
-import { ChainId } from '../constants'
 import { Currency } from './currency'
 import { Token } from './Token'
+import { ChainId } from '..'
 
 /**
  * A currency is any fungible financial instrument, including Native, all ERC20 tokens, and other chain-native currencies
