@@ -2,7 +2,7 @@ import invariant from 'tiny-invariant'
 
 import { Currency } from '../currency'
 import { NativeCurrency } from '../NativeCurrency'
-import { Token, WNATIVE } from '../Token'
+import { Token, WNATIVE } from '../token'
 
 export class Binance extends NativeCurrency {
   protected constructor(chainId: number) {
